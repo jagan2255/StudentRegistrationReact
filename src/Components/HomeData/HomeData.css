@@ -1,0 +1,10 @@
+.homebodyData{
+    min-height: 570px;
+    background-color:rgba(112, 128, 144, 0.092)
+
+}
+
+.homedata22{
+    display: flex;
+    justify-content: space-around;
+}
