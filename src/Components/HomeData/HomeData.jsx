@@ -12,17 +12,18 @@ function HomeData() {
 
     return (
         <div>
-            <div className='homebodyData'>
-                <div className='homedata22'>
+            <div className='homebodyData '>
+                <div className='container'>
+                <div className='row'>
 
-                    <div>
+                    <div className='qwerty col col-lg-6'>
                         <Form sendDataBack={CollectDataFromForm} />
                     </div>
-                    <div>
+                    <div className='qwerty col col-lg-6'>
                         <TableData tablerefresh={dataFromForm} />
                     </div>
                 </div>
-
+</div>
             </div>
         </div>
     )

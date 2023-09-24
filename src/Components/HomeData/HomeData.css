@@ -8,3 +8,9 @@
     display: flex;
     justify-content: space-around;
 }
+
+.qwerty{
+    display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}

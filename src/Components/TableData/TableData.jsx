@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './TableDate.css'
 import axios from "axios"
 
-var apiurl = "http://localhost:3001";
-
+var apiurl = process.env.REACT_APP_API_URL
 
 
 
