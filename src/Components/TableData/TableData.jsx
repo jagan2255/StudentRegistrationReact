@@ -9,6 +9,7 @@ var apiurl = process.env.REACT_APP_API_URL
 function TableData(tablerefresh) {
 
   const [studentdata,setStudentdata] = useState([])
+  const [sort ,setSort]= useState(false)
 
 
   function formatDate(dateString) {
@@ -23,7 +24,7 @@ function TableData(tablerefresh) {
 
   useEffect(()=>{
 
-    axios.get(`${apiurl}/api/v1/studentdata/getstudents`).then((res)=>{
+    axios.get(`${apiurl}/api/v1/studentdata/getstudents${sort?"?sort=ASC":""}`).then((res)=>{
       if(res){
         setStudentdata(res.data)
       }
@@ -31,7 +32,7 @@ function TableData(tablerefresh) {
       console.log(err.message)
     })
   
-  },[tablerefresh])
+  },[tablerefresh,sort])
 
 
   return (
@@ -41,7 +42,7 @@ function TableData(tablerefresh) {
           <thead>
             <tr>
               <th scope="col">Adm No</th>
-              <th scope="col">Name</th>
+              <th scope="col" onClick={()=>{sort?setSort(false):setSort(true)}}>Name {sort?<i class="fa-solid fa-arrow-up-short-wide"></i>:<i class="fa-solid fa-arrows-up-down"></i>}</th>
               <th scope="col">Date of Birth</th>
               <th scope="col">Class</th>
               <th scope="col">Division</th>

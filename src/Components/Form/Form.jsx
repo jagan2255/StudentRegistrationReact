@@ -79,8 +79,16 @@ function Form({ sendDataBack }) {
     // Submit logic
     console.log('Form submitted:', { name, dob, className, division, gender });
 
+
+    const words = name.split(' ');
+    var result = ""
+    if (words.length > 0) {
+      words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
+      result = words.join(' ');
+    }
+
     var data = {
-      name: name,
+      name: result,
       dob: dob,
       className: className,
       division: division,
@@ -109,120 +117,120 @@ function Form({ sendDataBack }) {
   };
 
   return (
-      <div className="formclass">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="name">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              className="form-control"
+    <div className="formclass">
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="name">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="form-control"
 
-              value={name}
-              onChange={handleNameChange}
-            />
-            {nameError && <div className="text-danger">{nameError}</div>}
-            {name && !/^[a-zA-Z ]+$/.test(name) && (
-              <div className="text-danger">Please enter only letters.</div>
-            )}
-          </div>
+            value={name}
+            onChange={handleNameChange}
+          />
+          {nameError && <div className="text-danger">{nameError}</div>}
+          {name && !/^[a-zA-Z ]+$/.test(name) && (
+            <div className="text-danger">Please enter only letters.</div>
+          )}
+        </div>
 
-          <div className="mb-3">
-            <label className="form-label">Date of Birth</label>
-            <input
-              type="date"
-              className="form-control"
-              value={dob}
-              onChange={handleDobChange}
-            />
-            {dobError && <div className="text-danger">{dobError}</div>}
-          </div>
+        <div className="mb-3">
+          <label className="form-label">Date of Birth</label>
+          <input
+            type="date"
+            className="form-control"
+            value={dob}
+            onChange={handleDobChange}
+          />
+          {dobError && <div className="text-danger">{dobError}</div>}
+        </div>
 
-          <div className="mb-3">
-            <label className="form-label">Class</label>
-            <select
-              className="form-select"
-              value={className}
-              onChange={handleClassChange}
-            >
-              <option value="">Choose...</option>
-              <option value="I">I</option>
-              <option value="II">II</option>
-              <option value="III">III</option>
-              <option value="IV">IV</option>
-              <option value="V">V</option>
-              <option value="VI">VI</option>
-              <option value="VII">VII</option>
-              <option value="VIII">VIII</option>
-              <option value="IX">IX</option>
-              <option value="X">X</option>
-              <option value="XI">XI</option>
-              <option value="XII">XII</option>
+        <div className="mb-3">
+          <label className="form-label">Class</label>
+          <select
+            className="form-select"
+            value={className}
+            onChange={handleClassChange}
+          >
+            <option value="">Choose...</option>
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+            <option value="VI">VI</option>
+            <option value="VII">VII</option>
+            <option value="VIII">VIII</option>
+            <option value="IX">IX</option>
+            <option value="X">X</option>
+            <option value="XI">XI</option>
+            <option value="XII">XII</option>
 
-            </select>
-            {classError && <div className="text-danger">{classError}</div>}
-          </div>
+          </select>
+          {classError && <div className="text-danger">{classError}</div>}
+        </div>
 
-          <div className="mb-3">
-            <label className="form-label">Division</label>
-            <select
-              className="form-select"
-              value={division}
-              onChange={handleDivisionChange}
-            >
-              <option value="">Select Division...</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-            </select>
-            {divisionError && <div className="text-danger">{divisionError}</div>}
-          </div>
+        <div className="mb-3">
+          <label className="form-label">Division</label>
+          <select
+            className="form-select"
+            value={division}
+            onChange={handleDivisionChange}
+          >
+            <option value="">Select Division...</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+          </select>
+          {divisionError && <div className="text-danger">{divisionError}</div>}
+        </div>
 
-          <div className="mb-3">
-            <label className="form-label">Gender</label>
-            <div className='d-flex'>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="gender"
-                  id="male"
-                  value="Male"
-                  checked={gender === 'Male'}
-                  onChange={handleGenderChange}
-                />
-                <label className="form-check-label" htmlFor="male">
-                  Male
-                </label>
-              </div>
-              <div className="form-check mx-4">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="gender"
-                  id="female"
-                  value="Female"
-                  checked={gender === 'Female'}
-                  onChange={handleGenderChange}
-                />
-                <label className="form-check-label" htmlFor="female">
-                  Female
-                </label>
-              </div>
+        <div className="mb-3">
+          <label className="form-label">Gender</label>
+          <div className='d-flex'>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="gender"
+                id="male"
+                value="Male"
+                checked={gender === 'Male'}
+                onChange={handleGenderChange}
+              />
+              <label className="form-check-label" htmlFor="male">
+                Male
+              </label>
             </div>
-            {genderError && <div className="text-danger">{genderError}</div>}
-
+            <div className="form-check mx-4">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="gender"
+                id="female"
+                value="Female"
+                checked={gender === 'Female'}
+                onChange={handleGenderChange}
+              />
+              <label className="form-check-label" htmlFor="female">
+                Female
+              </label>
+            </div>
           </div>
+          {genderError && <div className="text-danger">{genderError}</div>}
 
-          <div className="d-grid gap-2 mt-4">
-            <button className="btn btn-primary" type="submit">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
+        </div>
+
+        <div className="d-grid gap-2 mt-4">
+          <button className="btn btn-primary" type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
 
   );
 }
